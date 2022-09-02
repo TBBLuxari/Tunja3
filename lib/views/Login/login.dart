@@ -283,15 +283,19 @@ class _OverlayLoginTypeState extends State<OverlayLoginType> {
         TituloNotidicacion = respuesta_del_spawn_isolate[0];
         MensajeNotificacion = respuesta_del_spawn_isolate[1];
         LinkNotificacion = respuesta_del_spawn_isolate[2];
+
         TNA1 = respuesta_del_spawn_isolate[3];
         MNA1 = respuesta_del_spawn_isolate[4];
         LNA1 = respuesta_del_spawn_isolate[5];
+
         TNA2 = respuesta_del_spawn_isolate[6];
         MNA2 = respuesta_del_spawn_isolate[7];
         LNA2 = respuesta_del_spawn_isolate[8];
+
         TNA3 = respuesta_del_spawn_isolate[9];
         MNA3 = respuesta_del_spawn_isolate[10];
         LNA3 = respuesta_del_spawn_isolate[11];
+
         TNA4 = respuesta_del_spawn_isolate[12];
         MNA4 = respuesta_del_spawn_isolate[13];
         LNA4 = respuesta_del_spawn_isolate[14];

@@ -6,6 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
+String uno = "1";
+
 class Notificar extends ChangeNotifier {
   //Instanciar
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -34,6 +36,20 @@ class Notificar extends ChangeNotifier {
     tz.initializeTimeZones();
   }
 
+  Future openBrowserURL({
+    required String url,
+    bool inApp = false,
+  }) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: inApp,
+        forceWebView: true,
+        enableJavaScript: true,
+      );
+    }
+  }
+
   //Notificacion con imagen
   Future INotificacion() async {
     //General
@@ -56,8 +72,8 @@ class Notificar extends ChangeNotifier {
         onSelectNotification: escribirMensaje);
 
     var bigPicture = const BigPictureStyleInformation(
-        DrawableResourceAndroidBitmap("icon426x240"),
-        largeIcon: DrawableResourceAndroidBitmap("icon72x72"),
+        DrawableResourceAndroidBitmap("imagencontenido"),
+        largeIcon: DrawableResourceAndroidBitmap("iconnoti"),
         htmlFormatContent: true,
         htmlFormatContentTitle: true);
 
@@ -92,13 +108,13 @@ class Notificar extends ChangeNotifier {
             iOS: iosInitializationSettings);
 
     await localNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: CNA1);
+        onSelectNotification: escribirMensaje);
 
     //Aqui toca poner lo del isolate y la base
 
     var bigPicture = const BigPictureStyleInformation(
-        DrawableResourceAndroidBitmap("icon426x240"),
-        largeIcon: DrawableResourceAndroidBitmap("icon72x72"),
+        DrawableResourceAndroidBitmap("imagencontenido"),
+        largeIcon: DrawableResourceAndroidBitmap("iconnoti"),
         htmlFormatContent: true,
         htmlFormatContentTitle: true);
 
@@ -107,7 +123,7 @@ class Notificar extends ChangeNotifier {
     var platform = NotificationDetails(android: android);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(0, TNA1, MNA1,
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 25)), platform,
+        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
@@ -131,13 +147,13 @@ class Notificar extends ChangeNotifier {
             iOS: iosInitializationSettings);
 
     await localNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: CNA2);
+        onSelectNotification: escribirMensaje);
 
     //Aqui toca poner lo del isolate y la base
 
     var bigPicture = const BigPictureStyleInformation(
-        DrawableResourceAndroidBitmap("icon426x240"),
-        largeIcon: DrawableResourceAndroidBitmap("icon72x72"),
+        DrawableResourceAndroidBitmap("imagencontenido1"),
+        largeIcon: DrawableResourceAndroidBitmap("iconnoti"),
         htmlFormatContent: true,
         htmlFormatContentTitle: true);
 
@@ -149,7 +165,7 @@ class Notificar extends ChangeNotifier {
         1,
         TituloNotidicacion,
         MNA2,
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 35)),
+        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 20)),
         platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
@@ -174,13 +190,13 @@ class Notificar extends ChangeNotifier {
             iOS: iosInitializationSettings);
 
     await localNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: CNA3);
+        onSelectNotification: escribirMensaje);
 
     //Aqui toca poner lo del isolate y la base
 
     var bigPicture = const BigPictureStyleInformation(
-        DrawableResourceAndroidBitmap("icon426x240"),
-        largeIcon: DrawableResourceAndroidBitmap("icon72x72"),
+        DrawableResourceAndroidBitmap("imagencontenido2"),
+        largeIcon: DrawableResourceAndroidBitmap("iconnoti"),
         htmlFormatContent: true,
         htmlFormatContentTitle: true);
 
@@ -189,7 +205,7 @@ class Notificar extends ChangeNotifier {
     var platform = NotificationDetails(android: android);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(2, TNA3, MNA3,
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 45)), platform,
+        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 30)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
@@ -213,12 +229,12 @@ class Notificar extends ChangeNotifier {
             iOS: iosInitializationSettings);
 
     await localNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: CNA4);
+        onSelectNotification: escribirMensaje);
     //Aqui toca poner lo del isolate y la base
 
     var bigPicture = const BigPictureStyleInformation(
-        DrawableResourceAndroidBitmap("icon426x240"),
-        largeIcon: DrawableResourceAndroidBitmap("icon72x72"),
+        DrawableResourceAndroidBitmap("imagencontenido"),
+        largeIcon: DrawableResourceAndroidBitmap("iconnoti"),
         htmlFormatContent: true,
         htmlFormatContentTitle: true);
 
@@ -226,12 +242,8 @@ class Notificar extends ChangeNotifier {
         styleInformation: bigPicture);
     var platform = NotificationDetails(android: android);
 
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-        3,
-        TituloNotidicacion,
-        MNA4,
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 55)),
-        platform,
+    await flutterLocalNotificationsPlugin.zonedSchedule(3, TNA4, MNA4,
+        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 40)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
@@ -241,108 +253,22 @@ class Notificar extends ChangeNotifier {
     await flutterLocalNotificationsPlugin.cancelAll();
   }
 
-  void escribirMensaje(String? payload) //
-  {
-    final url = LinkNotificacion;
+  void escribirMensaje(String? n) {
+    //var url = LNA3 + "?user=" + correo;
+    //https://adntra.herokuapp.com/index.html
+    //https://game-qa.adntraining.com.co/PruebaPushTrainingTunja/index.html
+    var url =
+        "https://adntra.herokuapp.com/index.html" + "?user=" + correo.text;
     print(url);
     Future openBrowserURL({
       required String url,
       bool inApp = false,
     }) async {
-      if (await canLaunch(url)) //
-      {
+      if (await canLaunch(url)) {
         await launch(
           url,
           forceSafariVC: inApp,
           forceWebView: inApp,
-          enableJavaScript: true,
-        );
-      }
-    }
-
-    openBrowserURL(url: url, inApp: false);
-  }
-
-  void CNA1(String? payload) //
-  {
-    final url = LNA1;
-    print(url);
-    Future openBrowserURL({
-      required String url,
-      bool inApp = false,
-    }) async {
-      if (await canLaunch(url)) //
-      {
-        await launch(
-          url,
-          forceSafariVC: inApp,
-          forceWebView: true,
-          enableJavaScript: true,
-        );
-      }
-    }
-
-    openBrowserURL(url: url, inApp: false);
-  }
-
-  void CNA2(String? payload) //
-  {
-    final url = LNA2;
-    print(url);
-    Future openBrowserURL({
-      required String url,
-      bool inApp = false,
-    }) async {
-      if (await canLaunch(url)) //
-      {
-        await launch(
-          url,
-          forceSafariVC: inApp,
-          forceWebView: true,
-          enableJavaScript: true,
-        );
-      }
-    }
-
-    openBrowserURL(url: url, inApp: false);
-  }
-
-  void CNA3(String? payload) //
-  {
-    final url = LNA3;
-    print(url);
-    Future openBrowserURL({
-      required String url,
-      bool inApp = false,
-    }) async {
-      if (await canLaunch(url)) //
-      {
-        await launch(
-          url,
-          forceSafariVC: inApp,
-          forceWebView: true,
-          enableJavaScript: true,
-        );
-      }
-    }
-
-    openBrowserURL(url: url, inApp: false);
-  }
-
-  void CNA4(String? payload) //
-  {
-    final url = LNA4;
-    print(url);
-    Future openBrowserURL({
-      required String url,
-      bool inApp = false,
-    }) async {
-      if (await canLaunch(url)) //
-      {
-        await launch(
-          url,
-          forceSafariVC: inApp,
-          forceWebView: true,
           enableJavaScript: true,
         );
       }

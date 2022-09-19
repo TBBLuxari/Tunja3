@@ -14,81 +14,10 @@ class Notificar extends ChangeNotifier {
       FlutterLocalNotificationsPlugin();
   //Inicializar
   Future inicializar() async {
-    // //General
-    // FlutterLocalNotificationsPlugin localNotificationsPlugin =
-    //     FlutterLocalNotificationsPlugin();
-    // //Android
-    // AndroidInitializationSettings androidInitializationSettings =
-    //     const AndroidInitializationSettings(
-    //         "tunja"); //icono que sale en la barrita , no en la notificacion
-    // //Ios
-    // IOSInitializationSettings iosInitializationSettings =
-    //     const IOSInitializationSettings(); //por ahora no icono para ios
-    // //Llamar la inicializacion
-    // final InitializationSettings initializationSettings =
-    //     InitializationSettings(
-    //         android: androidInitializationSettings,
-    //         iOS: iosInitializationSettings);
-
-    // await localNotificationsPlugin.initialize(initializationSettings,
-    //     onSelectNotification: escribirMensaje);
-
     tz.initializeTimeZones();
   }
 
-  Future openBrowserURL({
-    required String url,
-    bool inApp = false,
-  }) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: inApp,
-        forceWebView: true,
-        enableJavaScript: true,
-      );
-    }
-  }
-
   //Notificacion con imagen
-  Future INotificacion() async {
-    //General
-    FlutterLocalNotificationsPlugin localNotificationsPlugin =
-        FlutterLocalNotificationsPlugin();
-    //Android
-    AndroidInitializationSettings androidInitializationSettings =
-        const AndroidInitializationSettings(
-            "tunja"); //icono que sale en la barrita , no en la notificacion
-    //Ios
-    IOSInitializationSettings iosInitializationSettings =
-        const IOSInitializationSettings(); //por ahora no icono para ios
-    //Llamar la inicializacion
-    final InitializationSettings initializationSettings =
-        InitializationSettings(
-            android: androidInitializationSettings,
-            iOS: iosInitializationSettings);
-
-    await localNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: escribirMensaje);
-
-    var bigPicture = const BigPictureStyleInformation(
-        DrawableResourceAndroidBitmap("imagencontenido"),
-        largeIcon: DrawableResourceAndroidBitmap("iconnoti"),
-        htmlFormatContent: true,
-        htmlFormatContentTitle: true);
-
-    var android = AndroidNotificationDetails("channelid", "channelname",
-        styleInformation: bigPicture);
-
-    var platform = NotificationDetails(android: android);
-
-    await flutterLocalNotificationsPlugin.show(
-      0,
-      TituloNotidicacion,
-      MensajeNotificacion,
-      platform,
-    );
-  }
 
   Future HrNotificacion1() async {
     //General
@@ -108,12 +37,12 @@ class Notificar extends ChangeNotifier {
             iOS: iosInitializationSettings);
 
     await localNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: escribirMensaje);
+        onSelectNotification: escribirMensaje1);
 
     //Aqui toca poner lo del isolate y la base
 
     var bigPicture = const BigPictureStyleInformation(
-        DrawableResourceAndroidBitmap("imagencontenido"),
+        DrawableResourceAndroidBitmap("imagencontenido3"),
         largeIcon: DrawableResourceAndroidBitmap("iconnoti"),
         htmlFormatContent: true,
         htmlFormatContentTitle: true);
@@ -123,7 +52,7 @@ class Notificar extends ChangeNotifier {
     var platform = NotificationDetails(android: android);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(0, TNA1, MNA1,
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10)), platform,
+        tz.TZDateTime.now(tz.local).add(const Duration(minutes: 1)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
@@ -147,7 +76,7 @@ class Notificar extends ChangeNotifier {
             iOS: iosInitializationSettings);
 
     await localNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: escribirMensaje);
+        onSelectNotification: escribirMensaje2);
 
     //Aqui toca poner lo del isolate y la base
 
@@ -161,12 +90,8 @@ class Notificar extends ChangeNotifier {
         styleInformation: bigPicture);
     var platform = NotificationDetails(android: android);
 
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-        1,
-        TituloNotidicacion,
-        MNA2,
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 20)),
-        platform,
+    await flutterLocalNotificationsPlugin.zonedSchedule(1, TNA2, MNA2,
+        tz.TZDateTime.now(tz.local).add(const Duration(hours: 6)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
@@ -190,7 +115,7 @@ class Notificar extends ChangeNotifier {
             iOS: iosInitializationSettings);
 
     await localNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: escribirMensaje);
+        onSelectNotification: escribirMensaje3);
 
     //Aqui toca poner lo del isolate y la base
 
@@ -205,7 +130,7 @@ class Notificar extends ChangeNotifier {
     var platform = NotificationDetails(android: android);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(2, TNA3, MNA3,
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 30)), platform,
+        tz.TZDateTime.now(tz.local).add(const Duration(hours: 6)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
@@ -229,7 +154,7 @@ class Notificar extends ChangeNotifier {
             iOS: iosInitializationSettings);
 
     await localNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: escribirMensaje);
+        onSelectNotification: escribirMensaje4);
     //Aqui toca poner lo del isolate y la base
 
     var bigPicture = const BigPictureStyleInformation(
@@ -243,7 +168,7 @@ class Notificar extends ChangeNotifier {
     var platform = NotificationDetails(android: android);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(3, TNA4, MNA4,
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 40)), platform,
+        tz.TZDateTime.now(tz.local).add(const Duration(hours: 6)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
@@ -253,12 +178,12 @@ class Notificar extends ChangeNotifier {
     await flutterLocalNotificationsPlugin.cancelAll();
   }
 
-  void escribirMensaje(String? n) {
+  void escribirMensaje1(String? n) //
+  {
     //var url = LNA3 + "?user=" + correo;
     //https://adntra.herokuapp.com/index.html
     //https://game-qa.adntraining.com.co/PruebaPushTrainingTunja/index.html
-    var url =
-        "https://adntra.herokuapp.com/index.html" + "?user=" + correo.text;
+    var url = LNA1 + "?user=" + correo.text;
     print(url);
     Future openBrowserURL({
       required String url,
@@ -274,6 +199,86 @@ class Notificar extends ChangeNotifier {
       }
     }
 
+    reinicar = false;
+    openBrowserURL(url: url, inApp: false);
+    HrNotificacion2();
+  }
+
+  void escribirMensaje2(String? n) //
+  {
+    //var url = LNA3 + "?user=" + correo;
+    //https://adntra.herokuapp.com/index.html
+    //https://game-qa.adntraining.com.co/PruebaPushTrainingTunja/index.html
+    var url = LNA2 + "?user=" + correo.text;
+    ;
+    print(url);
+    Future openBrowserURL({
+      required String url,
+      bool inApp = false,
+    }) async {
+      if (await canLaunch(url)) {
+        await launch(
+          url,
+          forceSafariVC: inApp,
+          forceWebView: inApp,
+          enableJavaScript: true,
+        );
+      }
+    }
+
+    openBrowserURL(url: url, inApp: false);
+    HrNotificacion3();
+  }
+
+  void escribirMensaje3(String? n) //
+  {
+    //var url = LNA3 + "?user=" + correo;
+    //https://adntra.herokuapp.com/index.html
+    //https://game-qa.adntraining.com.co/PruebaPushTrainingTunja/index.html
+    var url = LNA3 + "?user=" + correo.text;
+    ;
+    print(url);
+    Future openBrowserURL({
+      required String url,
+      bool inApp = false,
+    }) async {
+      if (await canLaunch(url)) {
+        await launch(
+          url,
+          forceSafariVC: inApp,
+          forceWebView: inApp,
+          enableJavaScript: true,
+        );
+      }
+    }
+
+    openBrowserURL(url: url, inApp: false);
+    HrNotificacion4();
+  }
+
+  void escribirMensaje4(String? n) //
+  {
+    //var url = LNA3 + "?user=" + correo;
+    //https://adntra.herokuapp.com/index.html
+    //https://game-qa.adntraining.com.co/PruebaPushTrainingTunja/index.html
+    var url = LNA4 + "?user=" + correo.text;
+    ;
+    print(url);
+    Future openBrowserURL({
+      required String url,
+      bool inApp = false,
+    }) async {
+      if (await canLaunch(url)) {
+        await launch(
+          url,
+          forceSafariVC: inApp,
+          forceWebView: inApp,
+          enableJavaScript: true,
+        );
+      }
+    }
+
+    reinicar = true;
     openBrowserURL(url: url, inApp: false);
   }
 }

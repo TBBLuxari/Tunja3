@@ -17,6 +17,8 @@ var puntosbase;
 var namebase;
 var topbase;
 
+var reinicar = true;
+
 //-----------------------Notificacion Personalizada ----------------------------
 var TituloNotidicacion = "Hola";
 var MensajeNotificacion = "Es bueno verte otra vez";
@@ -132,7 +134,7 @@ void LLamarNotificacion1() async {
   await noti.HrNotificacion1();
 }
 
-void LLamarNotificacion2() async {
+/*void LLamarNotificacion2() async {
   await noti.HrNotificacion2();
 }
 
@@ -142,7 +144,7 @@ void LLamarNotificacion3() async {
 
 void LLamarNotificacion4() async {
   await noti.HrNotificacion4();
-}
+}*/
 
 //------------------------------------------------------------------------------
 //---------------------------------Login----------------------------------------
@@ -300,10 +302,13 @@ class _OverlayLoginTypeState extends State<OverlayLoginType> {
         MNA4 = respuesta_del_spawn_isolate[13];
         LNA4 = respuesta_del_spawn_isolate[14];
 
-        LLamarNotificacion1();
-        LLamarNotificacion2();
-        LLamarNotificacion3();
-        LLamarNotificacion4();
+        if (reinicar == true) {
+          LLamarNotificacion1();
+        }
+
+        //LLamarNotificacion2();
+        //LLamarNotificacion3();
+        //LLamarNotificacion4();
 
         setState(() {});
 

@@ -26,11 +26,7 @@ class _NotiState extends State<Noti> {
         body: Center(
             child: Consumer<Notificar>(
           builder: (context, model, _) =>
-              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            ElevatedButton(
-                onPressed: () => model.INotificacion(),
-                child: const Text('Notificacion con imagen')),
-          ]),
+              Column(mainAxisAlignment: MainAxisAlignment.center, children: []),
         )));
   }
 }

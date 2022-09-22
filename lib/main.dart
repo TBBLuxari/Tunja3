@@ -3,6 +3,7 @@ import 'package:adn_training/services/notificar.dart';
 import 'package:adn_training/views/Login/login.dart';
 import 'package:adn_training/views/home/home.dart';
 import 'package:adn_training/views/notificaciones.dart';
+import 'package:adn_training/views/terminos/loadingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         providers: [ChangeNotifierProvider(create: (_) => Notificar())],
         child: MaterialApp(
           theme: ThemeData(fontFamily: 'Monteserat'),
-          home: const Login(),
+          home: const loadingScreen(),
         ));
   }
 }

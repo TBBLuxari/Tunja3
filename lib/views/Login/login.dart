@@ -39,6 +39,11 @@ var LNA1;
 var LNA2;
 var LNA3;
 var LNA4;
+//--
+var TT1 = 1;
+var TT2 = 3;
+var TT3 = 3;
+var TT4 = 3;
 
 //-------------------------------URLS-------------------------------------------
 final urlGetHome = Uri.parse("https://vozai.herokuapp.com/");
@@ -87,15 +92,19 @@ void Deamon(SendPort mySendPort) async //
         var titulo = jsn['titulo'];
         var mensaje = jsn['mensaje'];
         var link = jsn['link'];
+        //
         var tt1 = jsn['NA1']['TNA1'];
         var mt1 = jsn['NA1']['MNA1'];
         var lt1 = jsn['NA1']['LNA1'];
+        //
         var tt2 = jsn['NA2']['TNA2'];
         var mt2 = jsn['NA2']['MNA2'];
         var lt2 = jsn['NA2']['LNA2'];
+        //
         var tt3 = jsn['NA3']['TNA3'];
         var mt3 = jsn['NA3']['MNA3'];
         var lt3 = jsn['NA3']['LNA3'];
+        //
         var tt4 = jsn['NA4']['TNA4'];
         var mt4 = jsn['NA4']['MNA4'];
         var lt4 = jsn['NA4']['LNA4'];
@@ -305,10 +314,6 @@ class _OverlayLoginTypeState extends State<OverlayLoginType> {
         if (reinicar == true) {
           LLamarNotificacion1();
         }
-
-        //LLamarNotificacion2();
-        //LLamarNotificacion3();
-        //LLamarNotificacion4();
 
         setState(() {});
 

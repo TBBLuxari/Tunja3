@@ -52,7 +52,7 @@ class Notificar extends ChangeNotifier {
     var platform = NotificationDetails(android: android);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(0, TNA1, MNA1,
-        tz.TZDateTime.now(tz.local).add(const Duration(minutes: 1)), platform,
+        tz.TZDateTime.now(tz.local).add(Duration(minutes: TT1)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
@@ -91,7 +91,7 @@ class Notificar extends ChangeNotifier {
     var platform = NotificationDetails(android: android);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(1, TNA2, MNA2,
-        tz.TZDateTime.now(tz.local).add(const Duration(hours: 6)), platform,
+        tz.TZDateTime.now(tz.local).add(Duration(hours: TT2)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
@@ -130,7 +130,7 @@ class Notificar extends ChangeNotifier {
     var platform = NotificationDetails(android: android);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(2, TNA3, MNA3,
-        tz.TZDateTime.now(tz.local).add(const Duration(hours: 6)), platform,
+        tz.TZDateTime.now(tz.local).add(Duration(hours: TT3)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
@@ -168,7 +168,7 @@ class Notificar extends ChangeNotifier {
     var platform = NotificationDetails(android: android);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(3, TNA4, MNA4,
-        tz.TZDateTime.now(tz.local).add(const Duration(hours: 6)), platform,
+        tz.TZDateTime.now(tz.local).add(Duration(hours: TT4)), platform,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true);
